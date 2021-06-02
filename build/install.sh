@@ -243,6 +243,10 @@ docker run -d \
   exit 1
 }
 
+# Update helper.sh permission to prevent error: 
+# starting container process caused "exec: \"/root/build/helper.sh\": permission denied": unknown
+chmod 777 helper.sh
+
 # run install script inside build container
 # todo omit -ti?
 docker exec -ti $build_image_name /root/build/helper.sh
